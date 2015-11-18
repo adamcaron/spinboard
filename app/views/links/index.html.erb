@@ -1,1 +1,22 @@
 <span>Welcome, <%= current_user.username %>! </span> | <%= link_to "Logout", logout_path, method: :delete %>
+
+<h2>Submit a Link</h2>
+
+<%= form_for(@link) do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title %> <br>
+
+  <%= f.label :url %>
+  <%= f.text_field :url %><br>
+
+  <%= f.submit "Submit Link" %>
+<% end %>
+
+<h1>Links</h1>
+
+<% @links.each do |link| %>
+  <p>
+    <%= link.title %>, <%= link_to link.url, link.url %><br>
+    <%= link.status %>
+  </p>
+<% end %>
