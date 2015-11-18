@@ -18,11 +18,25 @@ class LinksController < ApplicationController
     end
   end
 
+  def edit
+    @link = Link.find(params[:id])
+  end
+
   def update
     if params[:update_status]
       link = Link.find(params[:id])
       link.change_status
       render json: link
+    else
+      link = Link.find(params[:id])
+      link.update!(link_params)
+      if link.save
+        flash[:notice] = "Link updated!"
+        redirect_to root_path
+      else
+        flash[:error] = "Link not updated - Please try updating link again"
+        render :edit
+      end
     end
   end
 

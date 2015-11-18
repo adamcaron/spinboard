@@ -14,13 +14,9 @@ RSpec.feature "User updates status of link", type: :feature do
       click_button("Create Account")
 
       # Create Link
-      expect(current_path).to eq(root_path)
-      expect(page).to have_content("Links")
-      expect(page).to have_content("Submit a Link")
       fill_in "Title", with: "My fav search engine"
       fill_in "Url", with: "https://google.com"
       click_button("Submit Link")
-
 
       # Change status
       expect(page).to have_content("Mark as Read")
