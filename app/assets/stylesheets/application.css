@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+.Read {
+  text-decoration: line-through;
+}
