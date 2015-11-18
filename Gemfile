@@ -18,6 +18,7 @@ end
 
 group :test do
   gem 'shoulda-matchers', '~> 3.0'
+  gem 'selenium-webdriver'
 end
 
 group :development, :test do

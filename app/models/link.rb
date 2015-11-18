@@ -11,4 +11,12 @@ class Link < ActiveRecord::Base
       "Unread"
     end
   end
+
+  def change_status
+    if self.read
+      self.update!(read: false)
+    else
+      self.update!(read: true)
+    end
+  end
 end

@@ -15,8 +15,8 @@
 <h1>Links</h1>
 
 <% @links.each do |link| %>
-  <p>
-    <%= link.title %>, <%= link_to link.url, link.url %><br>
-    <%= link.status %>
+  <p class="link" data-link-id=<%= link.id.to_s %> >
+    <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url, class: link.status %><br>
+    <span class="status"><%= link.status %></span> | <button class="change-status"><%= button_text(link.id) %></button>
   </p>
 <% end %>
