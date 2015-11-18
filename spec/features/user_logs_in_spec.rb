@@ -8,15 +8,19 @@ RSpec.feature "User logs in", type: :feature do
     expect(page).to have_content("Log In")
   end
 
-  scenario "Unauthenticated user craetes accoutn" do
+  scenario "Unauthenticated user creates account" do
     visit root_path
     click_link("Sign Up")
 
     expect(page).to have_content("Create a new account")
     fill_in "Username", with: "Adam"
+    fill_in "Email", with: "adam@something.com"
     fill_in "Password", with: "123"
+    fill_in "Confirm Password", with: "123"
     click_button("Create Account")
 
+    expect(User.count).to eq(1)
+    expect(User.last.email).to eq("adam@something.com")
     expect(current_path).to eq(root_path)
     expect(page).to have_content("Welcome, Adam!")
     expect(page).to have_link("Logout")
