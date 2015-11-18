@@ -14,6 +14,15 @@
 
 <h1>Links</h1>
 
+<hr />
+
+<section id="search-area">
+  <h3>Search Links:</h3>
+  <input type="text" id="search-input" placeholder="Search Links" />
+</section>
+
+<hr />
+
 <% @links.each do |link| %>
   <p class="link" data-link-id=<%= link.id.to_s %> >
     <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url %><br>
