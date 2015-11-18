@@ -16,7 +16,9 @@
 
 <% @links.each do |link| %>
   <p class="link" data-link-id=<%= link.id.to_s %> >
-    <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url, class: link.status %><br>
-    <span class="status"><%= link.status %></span> | <button class="change-status"><%= button_text(link.id) %></button>
+    <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url %><br>
+    <span class="status"><%= link.status %></span>
+    | <button class="change-status"><%= button_text(link.id) %></button>
+    | <%= link_to "Edit", edit_link_path(id: link), class: "edit" %>
   </p>
 <% end %>
