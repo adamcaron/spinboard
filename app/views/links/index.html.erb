@@ -39,7 +39,7 @@
       <span class="tags">
         Tags:
         <% link.tags.each do |tag| %>
-          <%= tag.title %><%= link_to "X", untag_path(id: link, tag_id: tag) %>
+          <%= link_to tag.title, tag_path(tag) %> <%= link_to "X", untag_path(id: link, tag_id: tag) %>
         <% end %>
       </span>
     </div>

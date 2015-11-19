@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create]
   resources :links, except: [:show, :destroy]
-  resources :tags, only: [:create]
+  resources :tags, only: [:create, :show]
   get 'link/:id/untag/:tag_id', to: 'links#untag', as: "untag"
 
   get     '/login',  to: "sessions#new"

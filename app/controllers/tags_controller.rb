@@ -5,4 +5,8 @@ class TagsController < ApplicationController
     link.tags << tag
     redirect_to root_path
   end
+
+  def show
+    @tag = Tag.find(params[:id])
+  end
 end
