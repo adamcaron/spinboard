@@ -13,8 +13,7 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to root_path
     else
-      flash.now[:errors] = @link.errors.full_messages.join(", ")
-      render :index
+      redirect_to root_path
     end
   end
 

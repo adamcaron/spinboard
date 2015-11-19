@@ -25,4 +25,12 @@ RSpec.feature "User logs in", type: :feature do
     expect(page).to have_content("Welcome, Adam!")
     expect(page).to have_link("Logout")
   end
+
+  scenario "Unauthenticated cannot sign in" do
+    visit root_path
+    fill_in "Email", with: "adam@something.com"
+    fill_in "Password", with: "123"
+
+    expect(current_path).to eq('/login')
+  end
 end

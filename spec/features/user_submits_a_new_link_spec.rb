@@ -21,4 +21,21 @@ RSpec.feature "User submits a new link", type: :feature do
     expect(page).to have_content("My fav search engine")
     expect(page).to have_content("https://google.com")
   end
+
+  scenario "Invalid link" do
+    visit root_path
+    click_link("Sign Up")
+    fill_in "Username", with: "Adam"
+    fill_in "Email", with: "adam@something.com"
+    fill_in "Password", with: "123"
+    fill_in "Confirm Password", with: "123"
+    click_button("Create Account")
+
+    fill_in "Title", with: "Some Link withour a URL"
+    fill_in "Url", with: ""
+    click_button("Submit Link")
+
+    expect(current_path).to eq(root_path)
+    expect(page).not_to have_content("Some Link withour a URL")
+  end
 end
