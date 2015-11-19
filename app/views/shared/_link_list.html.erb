@@ -4,7 +4,8 @@
     <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url %><br><br>
     <span class="status"><%= link.status %></span>
     | <button class="change-status"><%= button_text(link.id) %></button>
-    | <%= link_to "Edit", edit_link_path(id: link), class: "edit" %><br><br>
+    | <%= link_to "Edit", edit_link_path(id: link), class: "edit" %>
+    | <%= link_to "Delete", link_path(id: link), method: :delete %><br><br>
     <%= form_for(:tag, url: tags_path(link_id: link)) do |f| %>
       <%= f.text_field :title, placeholder: "Enter Tag Name" %>
       <%= f.submit "Add Tag" %>
