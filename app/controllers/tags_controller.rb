@@ -8,5 +8,11 @@ class TagsController < ApplicationController
 
   def show
     @tag = Tag.find(params[:id])
+    @links = @tag.links
+  end
+
+  def destroy
+    Tag.find(params[:id]).destroy
+    redirect_to root_path
   end
 end
