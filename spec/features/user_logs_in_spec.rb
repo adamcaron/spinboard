@@ -33,4 +33,18 @@ RSpec.feature "User logs in", type: :feature do
 
     expect(current_path).to eq('/login')
   end
+
+  scenario "User signs up with bad credentials" do
+    visit root_path
+    click_link("Sign Up")
+
+    expect(page).to have_content("Create a new account")
+    fill_in "Username", with: ""
+    fill_in "Email", with: "adam@something.com"
+    fill_in "Password", with: "123"
+    fill_in "Confirm Password", with: "123"
+    click_button("Create Account")
+
+    expect(current_path).to eq(users_path)
+  end
 end

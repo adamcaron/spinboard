@@ -27,6 +27,13 @@ RSpec.feature "User updates status of link", type: :feature do
       expect(page).to have_content("Mark as Unread")
       expect(page).not_to have_content("Mark as Read")
 
+      # Re-navigate to page
+      visit root_path
+
+      expect(page).to have_content("Mark as Unread")
+      expect(page).not_to have_content("Mark as Read")
+
+      # Change status again
       click_button("Mark as Unread")
       expect(Link.last.read).to be(false)
       expect(page).to have_content("Mark as Read")
