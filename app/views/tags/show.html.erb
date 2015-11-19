@@ -1,0 +1,5 @@
+<h1>Links for the '<%= @tag.title %>' tag:</h1>
+
+<%= link_to "Delete this tag altogether", tag_path(@tag), method: :delete %>
+
+<%= render "shared/link_list" %>

@@ -14,27 +14,16 @@
 
 <h1>Links</h1>
 
-<hr />
-
 <section id="search-area">
   <h3>Search Links:</h3>
   <input type="text" id="search-input" placeholder="Search Links" />
 </section>
 
-<hr />
-
-<%= select_tag(:status_filter, options_for_select([ ["Filter By Status", 0], ["Read", 1], ["Unread", 2] ], selected: 0), class: "status-filter") %>
-<%= select_tag(:alphabetical_filter, options_for_select([ ["Sort Alphabetically ...", 0], ["A-Z", 1], ["Z-A", 2] ], selected: 0), class: "alphabetical-filter") %>
+<section id="filter">
+  <%= select_tag(:status_filter, options_for_select([ ["Filter By Status", 0], ["Read", 1], ["Unread", 2] ], selected: 0), class: "status-filter") %>
+  <%= select_tag(:alphabetical_filter, options_for_select([ ["Sort Alphabetically ...", 0], ["A-Z", 1], ["Z-A", 2] ], selected: 0), class: "alphabetical-filter") %>
+</section>
 
 <section id="links">
-  <% @links.each do |link| %>
-
-    <p class="link <%= link.status %>" data-link-id=<%= link.id.to_s %> >
-      <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url %><br>
-      <span class="status"><%= link.status %></span>
-      | <button class="change-status"><%= button_text(link.id) %></button>
-      | <%= link_to "Edit", edit_link_path(id: link), class: "edit" %>
-    </p>
-
-  <% end %>
+  <%= render partial: "shared/link_list" %>
 </section>

@@ -1,0 +1,21 @@
+<% @links.each do |link| %>
+
+  <div class="link <%= link.status %>" data-link-id=<%= link.id.to_s %> >
+    <span class="title"><%= link.title %></span>, <%= link_to link.url, link.url %><br><br>
+    <span class="status"><%= link.status %></span>
+    | <button class="change-status"><%= button_text(link.id) %></button>
+    | <%= link_to "Edit", edit_link_path(id: link), class: "edit" %>
+    | <%= link_to "Delete", link_path(id: link), method: :delete %><br><br>
+    <%= form_for(:tag, url: tags_path(link_id: link)) do |f| %>
+      <%= f.text_field :title, placeholder: "Enter Tag Name" %>
+      <%= f.submit "Add Tag" %>
+    <% end %><br>
+    <span class="tags">
+      Tags:
+      <% link.tags.each do |tag| %>
+        <%= link_to tag.title, tag_path(tag) %> <%= link_to "X", untag_path(id: link, tag_id: tag) %>
+      <% end %>
+    </span>
+  </div>
+
+<% end %>

@@ -4,6 +4,9 @@ class Link < ActiveRecord::Base
 
   belongs_to :user
 
+  has_many :link_tags
+  has_many :tags, through: :link_tags
+
   def status
     if self.read
       "Read"
