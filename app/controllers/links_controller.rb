@@ -4,7 +4,8 @@ class LinksController < ApplicationController
   def index
     redirect_to login_path unless current_user
     @link = Link.new
-    @links = Link.all.where(user_id: current_user).order('created_at DESC')
+    # @links = Link.all.where(user_id: current_user).order('created_at DESC')
+    @links = current_user.links.order('created_at DESC')
   end
 
   def create
@@ -37,6 +38,7 @@ class LinksController < ApplicationController
     end
   end
 
+  # move to 'LinkTagsController#destroy'
   def untag
     link = Link.find(params[:id])
     link.tags.delete(params[:tag_id])
