@@ -28,13 +28,11 @@ class LinksController < ApplicationController
       render json: link
     else
       link = Link.find(params[:id])
-      link.update!(link_params)
+      link.update(link_params)
       if link.save
-        flash[:notice] = "Link updated!"
         redirect_to root_path
       else
-        flash[:error] = "Link not updated - Please try updating link again"
-        render :edit
+        redirect_to edit_link_path(link)
       end
     end
   end
