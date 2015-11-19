@@ -5,12 +5,17 @@ $(document).ready(function () {
 function filterByStatus () {
   $('.status-filter').change(function () {
     if (this.selectedIndex == 1) {
-      debugger;
-      // Filter by
+      // Filter by 'Read'
+      $('.Read').removeClass('hide');
+      $('.Unread').addClass('hide');
     } else if (this.selectedIndex == 2) {
-      // Filter by Unread
+      // Filter by 'Unread'
+      $('.Read').addClass('hide');
+      $('.Unread').removeClass('hide');
     } else {
       // Do not filter
+      $('.Read').removeClass('hide');
+      $('.Unread').removeClass('hide');
     }
   })
 };
