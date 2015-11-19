@@ -4,7 +4,7 @@ $(document).ready(function () {
 
 function sortAlphabetically () {
   $('.alphabetical-filter').change(function () {
-    var links = $('#links p')
+    var links = $('#links .link')
     if (this.selectedIndex == 1) {
       // Sort 'A-Z'
       var azLinks = links.sort(function (a, b) {

@@ -19,10 +19,10 @@ function renderUpdatedLink (link, button) {
   if (link.read) {
     this.innerHTML = "Mark as Unread"
     this.previousElementSibling.innerHTML = "Read"
-    this.closest('p').classList.add("Read");
+    this.closest('div').classList.add("Read");
   } else {
     this.innerHTML = "Mark as Read"
     this.previousElementSibling.innerHTML = "Unread"
-    this.closest('p').classList.remove("Read");
+    this.closest('div').classList.remove("Read");
   }
 };

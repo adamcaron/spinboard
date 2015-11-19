@@ -40,6 +40,12 @@ class LinksController < ApplicationController
     end
   end
 
+  def untag
+    link = Link.find(params[:id])
+    link.tags.delete(params[:tag_id])
+    redirect_to root_path
+  end
+
   private
 
   def link_params
